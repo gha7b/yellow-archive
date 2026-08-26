@@ -277,6 +277,7 @@ export const CONTENT = {
     publishButton: { en: "PUBLISH TALE", ar: "انشر السالفة" },
     listTitle: { en: "PUBLISHED TALES", ar: "السوالف المنشورة" },
     emptyState: { en: "No tales yet — drop us one, doesn't even have to be about Al-Ahli.", ar: "مافيه سوالف للحين - اهبد لنا سالفة ترا مو لازم عن الأهلي." },
+    endOfListNote: { en: "Got another one? Drop us any tale... doesn't matter what it's about 👇", ar: "اهبد لنا أي سالفة.. الخ 👇" },
     byLabel: { en: "by", ar: "بواسطة" },
     votedNote: { en: "Thanks for voting.", ar: "شكراً على تصويتك." },
     editButton: { en: "EDIT", ar: "تعديل" },
@@ -299,6 +300,10 @@ export const CONTENT = {
     subtitle: {
       en: "Browse inspectable records, match sheets, VAR screen captures, and ref audio logs.",
       ar: "تصفح الأدلة والمستندات المحفوظة، صور الفار، ومحاضر المباريات التاريخية."
+    },
+    endOfListNote: {
+      en: "Relegation is a shame that lives forever.",
+      ar: "الهبوط عار سيخلد للأبد."
     },
     filterAll: { en: "ALL EVIDENCE", ar: "جميع الأدلة" },
     filterVar: { en: "VAR DISPUTES", ar: "قرارات الفار" },
@@ -365,6 +370,58 @@ export const CONTENT = {
           en: "Recovered field recording — peak level 114 dB at final whistle.",
           ar: "تسجيل ميداني تم استرجاعه — أعلى مستوى صوت 114 ديسبل عند صافرة النهاية."
         }
+      },
+      {
+        id: "ev-4",
+        category: "VAR DISPUTES",
+        categoryAr: "قرارات الفار",
+        title: { en: "Exhibit #04: [CLASSIFIED — Reveal Pending]", ar: "مستند 04: [سري — الكشف قريباً]" },
+        desc: {
+          en: "This file is still stuck with the archive's legal team. Word is the truth behind it is funnier than anyone's expecting. Stay close to the archive — new documents are about to drop 😂",
+          ar: "هالمستند لسه عالق عند فريق الأرشيف القانوني. يقولون الحقيقة اللي وراه أطرف بكثير مما تتخيلون. خلوكم قريبين من الأرشيف... قريباً بتنكشف الحقيقة كاملة 😂"
+        },
+        image: "/images/referee-orange.jpg",
+        date: "TBA",
+        satireTag: { en: "FICTIONAL ARCHIVE ENTRY", ar: "قيد أرشيفي خيالي" }
+      },
+      {
+        id: "ev-5",
+        category: "TACTICAL ACCIDENTS",
+        categoryAr: "الكوارث التكتيكية",
+        title: { en: "Exhibit #05: The Formation That Shall Not Be Named", ar: "مستند 05: التشكيلة اللي ما نقدر نسميها" },
+        desc: {
+          en: "Analysts are still arguing over what this whiteboard actually shows. The full breakdown is coming soon, and honestly it might be the funniest one yet. Keep checking back 👀",
+          ar: "المحللين لسه يتناقشون وش بالضبط رسمة هالسبورة. التحليل الكامل جاي قريب، وبصراحة ممكن يكون أطرف وحدة للحين. خلكم متابعين 👀"
+        },
+        image: "/images/ev-2-tactic.jpg",
+        date: "TBA",
+        satireTag: { en: "FICTIONAL ARCHIVE ENTRY", ar: "قيد أرشيفي خيالي" }
+      },
+      {
+        id: "ev-6",
+        category: "AUDIO TAPES",
+        categoryAr: "تسجيلات الصوت",
+        title: { en: "Exhibit #06: The Locker Room Tape (Unreleased)", ar: "مستند 06: تسجيل غرفة الملابس (غير منشور)" },
+        desc: {
+          en: "We have it. We're just deciding how much of it is safe to publish. Consider this your official heads-up: more archive drops are coming, and this one's spicy 🔥",
+          ar: "عندنا التسجيل. بس لسه نقرر وش القدر اللي نقدر ننشره بأمان. اعتبروا هذا تنبيه رسمي: مستندات جديدة جاية للأرشيف، وهذي بالذات فيها طقطقة 🔥"
+        },
+        image: "/images/ev-3-whistle.png",
+        date: "TBA",
+        satireTag: { en: "FICTIONAL ARCHIVE ENTRY", ar: "قيد أرشيفي خيالي" }
+      },
+      {
+        id: "ev-7",
+        category: "VAR DISPUTES",
+        categoryAr: "قرارات الفار",
+        title: { en: "Exhibit #07: The Missing Minute", ar: "مستند 07: الدقيقة المفقودة" },
+        desc: {
+          en: "Somewhere between minute 89 and 90, something happened that the archive isn't ready to talk about yet. Soon though. Very soon. Get ready 😂",
+          ar: "بين الدقيقة 89 و90 صار شي الأرشيف لسه مو مستعد يحكي عنه. بس قريب... قريب جداً. استعدوا 😂"
+        },
+        image: "/images/courtroom_gavel.jpg",
+        date: "TBA",
+        satireTag: { en: "FICTIONAL ARCHIVE ENTRY", ar: "قيد أرشيفي خيالي" }
       }
     ]
   },
@@ -587,13 +644,17 @@ export const CONTENT = {
       joinPlaceholder: { en: "Enter a name to appear on the table", ar: "اكتب اسمك عشان تظهر بالجدول" },
       joinButton: { en: "ADD MY NAME TO THE TABLE", ar: "أضف اسمي إلى الجدول" },
       updateButton: { en: "UPDATE MY SCORES", ar: "حدّث نتائجي" },
+      leaveButton: { en: "REMOVE MY NAME", ar: "احذف اسمي" },
+      leaveConfirm: { en: "Remove your name from the table? This cannot be undone.", ar: "تحذف اسمك من الجدول؟ ما تقدر ترجعه بعدين." },
       joinedNote: { en: "You're on the table as", ar: "أنت مسجل بالجدول باسم" },
       colName: { en: "NAME", ar: "الاسم" },
       colVar: { en: "VAR SCORE", ar: "درجة الفار" },
       colEscape: { en: "ESCAPE DISTANCE", ar: "مسافة الهروب" },
       colPenalty: { en: "PENALTY SCORE", ar: "نتيجة الركلات" },
       colRating: { en: "RATING", ar: "التقييم" },
-      emptyState: { en: "No one has joined the table yet — be the first.", ar: "محد انضم للجدول للحين - خلك اول واحد." }
+      emptyState: { en: "No one has joined the table yet — be the first.", ar: "محد انضم للجدول للحين - خلك اول واحد." },
+      endOfListNote: { en: "That's the list — share your name and score to join it.", ar: "خلصت الأسماء.. شارك اسمك ونقاطك عشان تنضم للجدول." },
+      endOfListNoteJoined: { en: "Try to be the best — or at least one of the relegated 🙄", ar: "حاول تكون الأفضل — أو من الهابطين عالأقل 🙄" }
     },
     // STRINGS FOR THE PLAYABLE "THE COMEBACK PENALTY" SHOOTOUT GAME
     penaltyUi: {
@@ -637,8 +698,12 @@ export const CONTENT = {
       ar: "بيان المعجبين"
     },
     manifestoText: {
-      en: "Great football stories are not only made of gold medals and trophy lifts. True drama lies in the unbelievable plot twists, the 90th-minute heartbreaks, and the collective humor that unites fans across social media. The Swamp Archive is a high-fashion, tongue-in-cheek celebration of football passion.",
-      ar: "قصص كرة القدم العظيمة لا تقتصر على الميداليات والكؤوس فقط، بل تكمن الدراما الحقيقية في المنعطفات غير المتوقعة، واللحظات الحابسة للأنفاس في الدقيقة 90، والروح المرحة التي تجمع الجماهير. أرشيف المستنقع هو تكريم بأسلوب فاخر ومرح للشغف الكروي."
+      en: "Honestly, football stories don't need trophies to be legendary. The real drama is in the plot twists nobody saw coming, the 90th-minute heartbreak, and the jokes that end up funnier than the match itself. The Swamp Archive is just us keeping all of that alive, one meme at a time.",
+      ar: "بصراحة، أحلى قصص الكرة مو لازم تكون فيها كأس. الدراما الحقيقية بالمنعطفات اللي محد توقعها، وكسرة الخاطر بالدقيقة 90، والتعليقات اللي طلعت أطرف من المباراة نفسها. أرشيف المستنقع بس طريقتنا إننا نحافظ على كل ذكرى بميم."
+    },
+    manifestoClosingLine: {
+      en: "Relegation is a shame that lives forever.",
+      ar: "الهبوط عار سيخلد للأبد."
     },
     contactTitle: {
       en: "SUBMIT YOUR 2022 MEMORIES & EVIDENCE",
@@ -676,15 +741,10 @@ export const CONTENT = {
         en: "THE ARCHIVIST BEHIND THE ARCHIVE",
         ar: "الأرشيفي وراء الأرشيف"
       },
-      bioLines: [
-        { en: "Created by Ghaith Al-Tamimi.", ar: "من إنشاء غيث التميمي." },
-        {
-          en: "A 16-year-old developer who enjoys programming, artificial intelligence, and games.",
-          ar: "مطور عمره 16 سنة، يحب البرمجة والذكاء الاصطناعي والألعاب."
-        },
-        { en: "Also an unofficial Al-Ahli fan… allegedly.", ar: "ومشجع غير رسمي للنادي الأهلي… حسب الأرشيف." },
-        { en: "Single, according to the archive records.", ar: "أعزب، وفقًا لسجلات الموقع." }
-      ],
+      bioText: {
+        en: "This whole thing was built by Ghaith Al-Tamimi — a 16-year-old who's into programming, AI, and games, and yeah, an unofficial Al-Ahli fan (allegedly). Single, per the archive's official records.",
+        ar: "الموقع كله سواه غيث التميمي، عمره 16 سنة ويحب البرمجة والذكاء الاصطناعي والألعاب، ومشجع غير رسمي للأهلي (حسب الأرشيف). أعزب، وفقًا لسجلات الموقع الرسمية."
+      },
       tiktokHandle: "@lkgh",
       tiktokUrl: "https://www.tiktok.com/@lkgh",
       tiktokLabel: {

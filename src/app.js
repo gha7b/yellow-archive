@@ -131,6 +131,11 @@ async function lbJoinOrUpdate(name) {
   return entry;
 }
 
+async function lbLeave() {
+  const myId = await ensureOwnerId();
+  await deleteDoc(doc(db, LEADERBOARD_COLLECTION, myId));
+}
+
 // ---------------------------------------------------------------------------
 // TALES STORAGE — backed by Firestore, real-time and shared across visitors.
 // Edit/delete is only offered in the UI for tales this browser's ownerId
@@ -381,6 +386,13 @@ class App {
         view.style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
+        // Stop any video/audio still playing on the page being left (e.g. the
+        // home hero video, or evidence-modal audio) — a page-view is just
+        // hidden with display:none, not unmounted, so without this the sound
+        // keeps playing invisibly after you've navigated away.
+        view.querySelectorAll('video, audio').forEach((media) => {
+          if (!media.paused) media.pause();
+        });
         view.style.display = 'none';
       }
     });
@@ -633,7 +645,6 @@ class App {
     }
 
     container.innerHTML = entries.map(e => {
-      const score = e.likes * 2 - e.dislikes;
       const voted = votes[e.id];
       const mine = talesIsMine(e.id);
       return `
@@ -646,7 +657,6 @@ class App {
           <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
             <button type="button" class="btn btn-secondary tale-vote-btn" data-tale-id="${e.id}" data-dir="like" ${voted ? 'disabled' : ''} style="padding: 0.4rem 0.85rem; font-size: 0.85rem;">👍 ${e.likes}</button>
             <button type="button" class="btn btn-secondary tale-vote-btn" data-tale-id="${e.id}" data-dir="dislike" ${voted ? 'disabled' : ''} style="padding: 0.4rem 0.85rem; font-size: 0.85rem;">👎</button>
-            <span style="font-weight: 700; color: var(--accent-acid);">${score}</span>
             ${mine ? `
               <span style="margin-left: auto; display: flex; gap: 0.5rem;">
                 <button type="button" class="btn btn-secondary tale-edit-btn" data-tale-id="${e.id}" style="padding: 0.4rem 0.85rem; font-size: 0.85rem;">${tp.editButton[lang]}</button>
@@ -656,7 +666,9 @@ class App {
           </div>
         </div>
       `;
-    }).join('');
+    }).join('') + `
+      <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem;">${tp.endOfListNote[lang]}</p>
+    `;
 
     container.querySelectorAll('.tale-vote-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
@@ -753,6 +765,11 @@ class App {
     entries.sort((a, b) => this.leaderboardTab === 'top' ? b.rating - a.rating : a.rating - b.rating);
     entries = entries.slice(0, 10);
 
+    // Once you've already joined, "share your name and score" no longer makes
+    // sense as the closing line — swap it for a playful nudge instead.
+    const alreadyJoined = !!lbGetMyEntry();
+    const closingNote = alreadyJoined ? lb.endOfListNoteJoined[lang] : lb.endOfListNote[lang];
+
     if (entries.length === 0) {
       tableBody.innerHTML = `<tr><td colspan="6" style="padding: 1rem 0.5rem; color: var(--text-muted);">${lb.emptyState[lang]}</td></tr>`;
     } else {
@@ -765,7 +782,11 @@ class App {
           <td style="padding: 0.6rem 0.5rem;">${e.g3}/5</td>
           <td style="padding: 0.6rem 0.5rem; color: var(--accent-acid); font-weight: 700;">${e.rating}</td>
         </tr>
-      `).join('');
+      `).join('') + `
+        <tr>
+          <td colspan="6" style="padding: 0.85rem 0.5rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;">${closingNote}</td>
+        </tr>
+      `;
     }
 
     // My scores row
@@ -784,6 +805,11 @@ class App {
       <button class="btn btn-primary" id="leaderboardJoinBtn">
         <span>${myEntry ? lb.updateButton[lang] : lb.joinButton[lang]}</span>
       </button>
+      ${myEntry ? `
+        <button type="button" class="btn btn-secondary" id="leaderboardLeaveBtn">
+          <span>${lb.leaveButton[lang]}</span>
+        </button>
+      ` : ''}
     `;
     document.getElementById('leaderboardJoinBtn').addEventListener('click', async (e) => {
       const input = document.getElementById('leaderboardNameInput');
@@ -805,6 +831,25 @@ class App {
           : 'Could not save your leaderboard entry — check your connection and try again.');
       }
     });
+
+    const leaveBtn = document.getElementById('leaderboardLeaveBtn');
+    if (leaveBtn) {
+      leaveBtn.addEventListener('click', async (e) => {
+        if (!window.confirm(lb.leaveConfirm[lang])) return;
+        const btn = e.currentTarget;
+        btn.disabled = true;
+        try {
+          await lbLeave();
+          this.renderLeaderboard();
+        } catch (err) {
+          console.error('Removing leaderboard entry failed:', err);
+          btn.disabled = false;
+          alert(lang === 'ar'
+            ? 'تعذر حذف اسمك، تأكد من اتصالك بالإنترنت وحاول مرة ثانية.'
+            : 'Could not remove your entry — check your connection and try again.');
+        }
+      });
+    }
   }
 
   renderArchiveEvidence() {
@@ -968,6 +1013,12 @@ class App {
     const modalBody = document.getElementById('modalBody');
     const modal = document.getElementById('evidenceModal');
 
+    // Stop whatever audio was playing for the previous exhibit before we
+    // swap the modal content out for a new one.
+    modalBody.querySelectorAll('audio, video').forEach((media) => {
+      if (!media.paused) media.pause();
+    });
+
     const evidenceUi = CONTENT.archivePage.evidenceUi;
 
     const audioBlock = item.audio ? `
@@ -1047,6 +1098,11 @@ class App {
     if (modal) {
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
+      // Otherwise the whistle/audio evidence tape keeps playing in the
+      // background even after the modal is closed.
+      modal.querySelectorAll('audio, video').forEach((media) => {
+        if (!media.paused) media.pause();
+      });
     }
   }
 

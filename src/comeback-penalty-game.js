@@ -11,6 +11,8 @@
  * ============================================================================
  */
 
+import { spawnConfettiFromElement } from './confetti.js';
+
 const BEST_SCORE_KEY = 'yelo_penalty_best_score';
 const ROUNDS_PER_MATCH = 5;
 const SHOT_ANIM_MS = 480;
@@ -32,6 +34,7 @@ export class ComebackPenaltyGame {
   destroy() {
     if (this.rafId) cancelAnimationFrame(this.rafId);
     if (this.particleRafId) cancelAnimationFrame(this.particleRafId);
+    if (this.resolveTimeoutId) clearTimeout(this.resolveTimeoutId);
     window.removeEventListener('keydown', this.keyHandler);
     window.removeEventListener('resize', this._onResize);
   }
@@ -211,7 +214,11 @@ export class ComebackPenaltyGame {
       </div>
     `;
 
-    setTimeout(() => {
+    // Tracked so destroy() can cancel it — otherwise closing the game modal
+    // mid-pause doesn't stop this from firing later and touching a shell
+    // that's no longer the active one.
+    this.resolveTimeoutId = setTimeout(() => {
+      this.resolveTimeoutId = null;
       if (this.round >= ROUNDS_PER_MATCH) {
         this._showFinalResult();
       } else {
@@ -231,7 +238,7 @@ export class ComebackPenaltyGame {
 
     this.mountEl.innerHTML = `
       <div class="game-shell">
-        <div class="glass-panel game-result-panel" style="padding: 2rem;">
+        <div class="glass-panel game-result-panel" style="padding: 2rem;" id="penaltyFinalPanel">
           <span class="section-badge">${t('arcadePage.penaltyUi.finalTitle')}</span>
           ${isNewBest ? `<div class="satire-flag" style="margin-top: 0.75rem;">${t('arcadePage.penaltyUi.newBestNote')}</div>` : ''}
           <div class="game-result-verdict" style="font-size: 1.4rem; margin-top: 0.75rem;">${this.score} / ${ROUNDS_PER_MATCH}</div>
@@ -243,6 +250,10 @@ export class ComebackPenaltyGame {
       </div>
     `;
     this.mountEl.querySelector('#penaltyReplayBtn').addEventListener('click', () => this._startMatch());
+
+    if (isNewBest || this.score >= 4) {
+      spawnConfettiFromElement(this.mountEl.querySelector('#penaltyFinalPanel'));
+    }
   }
 
   // Small canvas confetti burst fired from the goal spot the instant a shot

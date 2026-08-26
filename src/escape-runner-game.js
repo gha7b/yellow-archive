@@ -12,6 +12,8 @@
  * ============================================================================
  */
 
+import { spawnConfettiFromElement } from './confetti.js';
+
 const BEST_SCORE_KEY = 'yelo_escape_best_score';
 
 const GRAVITY = 2200;
@@ -425,7 +427,7 @@ export class EscapeRunnerGame {
     this.bestLabel.textContent = isNewBest ? finalScore : best;
 
     this.resultArea.innerHTML = `
-      <div class="glass-panel game-result-panel">
+      <div class="glass-panel game-result-panel" id="runnerFinalPanel">
         ${isNewBest ? `<div class="satire-flag" style="margin-bottom: 0.4rem;">${t('arcadePage.runnerUi.newBestNote')}</div>` : ''}
         <div class="game-result-verdict">${message}</div>
         <div class="game-result-detail">${t('arcadePage.runnerUi.scoreLabel')}: ${finalScore} · ${t('arcadePage.runnerUi.bestLabel')}: ${Math.max(finalScore, best)}</div>
@@ -435,6 +437,10 @@ export class EscapeRunnerGame {
       </div>
     `;
     this.resultArea.querySelector('#runnerRestartBtn').addEventListener('click', () => this._startGame());
+
+    if (isNewBest) {
+      spawnConfettiFromElement(this.resultArea.querySelector('#runnerFinalPanel'));
+    }
   }
 }
 

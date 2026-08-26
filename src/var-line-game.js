@@ -13,6 +13,8 @@
  * ============================================================================
  */
 
+import { spawnConfettiFromElement } from './confetti.js';
+
 const ROUND_COUNT = 5;
 const ROUND_TIME_MS = 3000;
 const GOOD_CALL_THRESHOLD_PX_RATIO = 0.035; // fraction of canvas width considered "onside" (good)
@@ -260,7 +262,7 @@ export class VarLineGame {
 
     this.mountEl.innerHTML = `
       <div class="game-shell">
-        <div class="glass-panel game-result-panel" style="padding: 2rem;">
+        <div class="glass-panel game-result-panel" style="padding: 2rem;" id="gameFinalPanel">
           <span class="section-badge">${t('arcadePage.gameUi.finalTitle')}</span>
           <div class="game-result-verdict" style="font-size: 1.4rem; margin-top: 0.75rem;">${t(rankKey)}</div>
           <div class="game-result-detail" style="font-size: 1rem; margin-top: 0.5rem;">${t('arcadePage.gameUi.score')}: <b style="color: var(--accent-acid);">${avg}%</b></div>
@@ -271,5 +273,11 @@ export class VarLineGame {
       </div>
     `;
     this.mountEl.querySelector('#gameReplayBtn').addEventListener('click', () => this._startGame());
+
+    // A good/legendary run deserves a small celebration, same as winning any
+    // other arcade game — not just the penalty shootout.
+    if (avg >= 65) {
+      spawnConfettiFromElement(this.mountEl.querySelector('#gameFinalPanel'));
+    }
   }
 }

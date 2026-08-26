@@ -1176,8 +1176,15 @@ html[dir="rtl"] .ticker-track {
   to { transform: translateX(-50%); }
 }
 
-.ticker-section:hover .ticker-track {
-  animation-play-state: paused;
+/* Only pause-on-hover for a real mouse pointer. On touch devices, tapping
+   anywhere near the ticker (scrolling past it, etc.) makes the browser latch
+   a permanent ":hover" state with no matching "unhover" event ever firing —
+   that's what made the ticker randomly freeze and never resume on mobile,
+   in both languages, since this had nothing to do with the site's text. */
+@media (hover: hover) and (pointer: fine) {
+  .ticker-section:hover .ticker-track {
+    animation-play-state: paused;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
