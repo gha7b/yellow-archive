@@ -26,27 +26,46 @@ import { signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 // visitor can no longer fake being someone else by editing a field.
 // ---------------------------------------------------------------------------
 let currentUid = null;
+let authFailed = false;
 let resolveAuthReady;
-const authReadyPromise = new Promise((resolve) => { resolveAuthReady = resolve; });
+let rejectAuthReady;
+const authReadyPromise = new Promise((resolve, reject) => { resolveAuthReady = resolve; rejectAuthReady = reject; });
 
 function startAnonymousAuth(onReady) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       currentUid = user.uid;
+      authFailed = false;
       resolveAuthReady(user.uid);
       if (onReady) onReady();
     }
+  }, (err) => {
+    console.error('Auth state error:', err);
+    authFailed = true;
+    rejectAuthReady(err);
   });
-  signInAnonymously(auth).catch((err) => console.error('Anonymous sign-in failed:', err));
+  signInAnonymously(auth).catch((err) => {
+    console.error('Anonymous sign-in failed:', err);
+    authFailed = true;
+    rejectAuthReady(err);
+  });
 }
 
 function getOwnerId() {
   return currentUid;
 }
 
-async function ensureOwnerId() {
-  if (currentUid) return currentUid;
-  return authReadyPromise;
+// Guards against the identity promise hanging forever (e.g. Anonymous Auth not
+// enabled in the Firebase console, or the request being blocked by the
+// network) — without this, any code awaiting it would silently freeze with no
+// error and no feedback, which is exactly what made the submit buttons look
+// like they were doing nothing at all.
+function ensureOwnerId() {
+  if (currentUid) return Promise.resolve(currentUid);
+  const timeout = new Promise((_, reject) => {
+    setTimeout(() => reject(new Error('AUTH_TIMEOUT')), 8000);
+  });
+  return Promise.race([authReadyPromise, timeout]);
 }
 
 // Shared "who am I" name — set by either the arcade leaderboard join box or the
@@ -642,8 +661,13 @@ class App {
     container.querySelectorAll('.tale-vote-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
         btn.disabled = true;
-        await talesVote(btn.getAttribute('data-tale-id'), btn.getAttribute('data-dir'));
-        this.renderTales();
+        try {
+          await talesVote(btn.getAttribute('data-tale-id'), btn.getAttribute('data-dir'));
+          this.renderTales();
+        } catch (err) {
+          console.error('Vote failed:', err);
+          btn.disabled = false;
+        }
       });
     });
 
@@ -696,10 +720,18 @@ class App {
       if (!name || !text) return;
       const submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) submitBtn.disabled = true;
-      await talesAdd(name, text);
-      textInput.value = '';
-      if (submitBtn) submitBtn.disabled = false;
-      this.renderTales();
+      try {
+        await talesAdd(name, text);
+        textInput.value = '';
+        this.renderTales();
+      } catch (err) {
+        console.error('Publishing tale failed:', err);
+        alert(i18n.getLang() === 'ar'
+          ? 'تعذر نشر السالفة، تأكد من اتصالك بالإنترنت وحاول مرة ثانية.'
+          : 'Could not publish your tale — check your connection and try again.');
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
     });
   }
 
@@ -760,10 +792,18 @@ class App {
         input.focus();
         return;
       }
-      e.currentTarget.disabled = true;
-      await lbJoinOrUpdate(name);
-      e.currentTarget.disabled = false;
-      this.renderLeaderboard();
+      const btn = e.currentTarget;
+      btn.disabled = true;
+      try {
+        await lbJoinOrUpdate(name);
+        this.renderLeaderboard();
+      } catch (err) {
+        console.error('Joining leaderboard failed:', err);
+        btn.disabled = false;
+        alert(i18n.getLang() === 'ar'
+          ? 'تعذر تسجيل اسمك بالتصنيف، تأكد من اتصالك بالإنترنت وحاول مرة ثانية.'
+          : 'Could not save your leaderboard entry — check your connection and try again.');
+      }
     });
   }
 

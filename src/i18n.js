@@ -4,7 +4,7 @@ const STORAGE_KEY = 'yellow_archive_lang';
 
 export class I18nEngine {
   constructor() {
-    this.currentLang = localStorage.getItem(STORAGE_KEY) || 'en';
+    this.currentLang = localStorage.getItem(STORAGE_KEY) || 'ar';
     this.listeners = [];
   }
 

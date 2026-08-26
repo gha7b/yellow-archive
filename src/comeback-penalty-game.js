@@ -23,12 +23,15 @@ export class ComebackPenaltyGame {
     this.t = t;
     this.getLang = getLang;
     this.rafId = null;
+    this.particleRafId = null;
+    this.particles = [];
     this.keyHandler = this._onKeyDown.bind(this);
     this._onResize = this._onResize.bind(this);
   }
 
   destroy() {
     if (this.rafId) cancelAnimationFrame(this.rafId);
+    if (this.particleRafId) cancelAnimationFrame(this.particleRafId);
     window.removeEventListener('keydown', this.keyHandler);
     window.removeEventListener('resize', this._onResize);
   }
@@ -86,7 +89,7 @@ export class ComebackPenaltyGame {
         <div class="game-canvas-wrapper" id="penaltyCanvasWrapper">
           <canvas id="penaltyCanvas"></canvas>
         </div>
-        <div class="game-actions" id="penaltyDirectionBtns">
+        <div class="game-actions penalty-dir-btns" id="penaltyDirectionBtns">
           <button class="btn btn-secondary" data-dir="left" style="flex: 1;"><span>${t('arcadePage.penaltyUi.leftButton')}</span></button>
           <button class="btn btn-secondary" data-dir="center" style="flex: 1;"><span>${t('arcadePage.penaltyUi.centerButton')}</span></button>
           <button class="btn btn-secondary" data-dir="right" style="flex: 1;"><span>${t('arcadePage.penaltyUi.rightButton')}</span></button>
@@ -139,6 +142,9 @@ export class ComebackPenaltyGame {
   }
 
   _nextRound() {
+    if (this.particleRafId) cancelAnimationFrame(this.particleRafId);
+    this.particleRafId = null;
+    this.particles = [];
     this.round += 1;
     this.roundLabel.textContent = `${this.round} / ${ROUNDS_PER_MATCH}`;
     this.resultArea.innerHTML = '';
@@ -152,6 +158,9 @@ export class ComebackPenaltyGame {
   _shoot(playerDir) {
     if (this.locked) return;
     this.locked = true;
+    if (this.particleRafId) cancelAnimationFrame(this.particleRafId);
+    this.particleRafId = null;
+    this.particles = [];
     this.dirBtnsWrap.style.opacity = '0.5';
     this.dirBtnsWrap.style.pointerEvents = 'none';
 
@@ -184,7 +193,13 @@ export class ComebackPenaltyGame {
   _resolveRound(state) {
     const t = this.t;
     const lang = this.getLang();
-    if (state.scored) this.score += 1;
+    if (state.scored) {
+      this.score += 1;
+      const targetX = this._zoneX(state.playerDir);
+      const goalY = this.cssHeight * 0.14;
+      const goalH = this.cssHeight * 0.32;
+      this._spawnGoalParticles(targetX, goalY + goalH * 0.55, state);
+    }
     this.scoreLabel.textContent = this.score;
 
     const messageKey = state.scored ? 'success' : 'miss';
@@ -228,6 +243,67 @@ export class ComebackPenaltyGame {
       </div>
     `;
     this.mountEl.querySelector('#penaltyReplayBtn').addEventListener('click', () => this._startMatch());
+  }
+
+  // Small canvas confetti burst fired from the goal spot the instant a shot
+  // scores — pure physics (velocity + gravity + fading life), no libraries.
+  _spawnGoalParticles(x, y, state) {
+    if (this.particleRafId) cancelAnimationFrame(this.particleRafId);
+    const colors = ['#F1EEE4', '#B8F23D', '#FFD34D', '#4DD4FF', '#FF6B6B'];
+    this.particles = Array.from({ length: 26 }, () => {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 1.5 + Math.random() * 4;
+      return {
+        x, y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 2.5,
+        size: 2 + Math.random() * 3,
+        life: 1,
+        decay: 0.015 + Math.random() * 0.015,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      };
+    });
+    this._lastResolvedState = state;
+    this._tickParticles();
+  }
+
+  _tickParticles() {
+    if (!this.particles.length) {
+      this.particleRafId = null;
+      return;
+    }
+    this.particles.forEach(p => {
+      p.vy += 0.12;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life -= p.decay;
+    });
+    this.particles = this.particles.filter(p => p.life > 0);
+
+    // Redraw the resting scene first (ball in the net, keeper dived) then
+    // layer the particles on top so they read as a burst at the goal mouth.
+    this._draw(1, this._lastResolvedState);
+    this._drawParticles();
+
+    if (this.particles.length) {
+      this.particleRafId = requestAnimationFrame(() => this._tickParticles());
+    } else {
+      this.particleRafId = null;
+    }
+  }
+
+  _drawParticles() {
+    const ctx = this.ctx;
+    if (!ctx) return;
+    this.particles.forEach(p => {
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, p.life);
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    });
   }
 
   _draw(progress, state) {

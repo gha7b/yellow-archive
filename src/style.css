@@ -1356,6 +1356,36 @@ html[lang="ar"] .evidence-thumb::after {
   flex-wrap: wrap;
 }
 
+/* The penalty game's left/center/right shot buttons map to fixed positions
+   on the pitch (the canvas goal zones never move), so their visual order
+   must stay left-to-right no matter the site's language/text direction —
+   otherwise switching to Arabic (RTL) silently swaps which button kicks
+   which way. */
+.penalty-dir-btns {
+  direction: ltr;
+}
+
+@media (max-width: 640px) {
+  /* On narrow screens the 3 buttons no longer fit on one row and used to
+     wrap in DOM order, which happened to leave "right" alone as the big
+     bottom button — visually implying it was the "center" one. Force an
+     explicit layout instead: left/right share the top row, and the center
+     button (the one that should read as the prominent, bottom, "middle"
+     action) spans the full width underneath. */
+  .penalty-dir-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "left right"
+      "center center";
+    gap: 0.65rem;
+  }
+
+  .penalty-dir-btns [data-dir="left"] { grid-area: left; }
+  .penalty-dir-btns [data-dir="right"] { grid-area: right; }
+  .penalty-dir-btns [data-dir="center"] { grid-area: center; }
+}
+
 /* Large always-visible tap target for the endless runner's jump action —
    works alongside the Space key on desktop. */
 .game-jump-btn {
