@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE SWAMP ARCHIVE • 2022 Relegation Dossier</title>
+  <meta name="description"
+    content="Satirical fan-made archive documenting the famous 2022 football relegation story. High fashion editorial design." />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E4C34A' stroke-width='1.4'><circle cx='12' cy='12' r='9.25'/><path d='M12,7.7 L16.09,10.67 L14.53,15.48 L9.47,15.48 L7.91,10.67 Z'/><path d='M12,7.7 L12,2.75 M16.09,10.67 L20.8,9.14 M14.53,15.48 L17.44,19.48 M9.47,15.48 L6.56,19.48 M7.91,10.67 L3.2,9.14'/></svg>" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body class="font-english">
+  <!-- Subtle ambient glow & noise textures -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="site-header" id="header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#home" class="brand-logo" data-view-target="home" aria-label="Swamp Archive Home">
+          <svg class="brand-whistle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <circle cx="12" cy="12" r="9.25" />
+            <path d="M12,7.7 L16.09,10.67 L14.53,15.48 L9.47,15.48 L7.91,10.67 Z" />
+            <path d="M12,7.7 L12,2.75 M16.09,10.67 L20.8,9.14 M14.53,15.48 L17.44,19.48 M9.47,15.48 L6.56,19.48 M7.91,10.67 L3.2,9.14" />
+          </svg>
+          <span data-i18n="siteName">THE SWAMP ARCHIVE</span>
+        </a>
+
+        <!-- MAIN DESKTOP MENU -->
+        <nav aria-label="Main Navigation">
+          <ul class="nav-menu" id="desktopNav">
+            <li><a href="#home" class="nav-link active" data-view-target="home" data-i18n="nav.home">Home</a></li>
+            <li><a href="#archive" class="nav-link" data-view-target="archive" data-i18n="nav.archive">The Archive</a>
+            </li>
+            <li><a href="#tales" class="nav-link" data-view-target="tales" data-i18n="nav.tales">Your Relegated
+                Tales</a></li>
+            <li><a href="#courtroom" class="nav-link" data-view-target="courtroom" data-i18n="nav.courtroom">The
+                Courtroom</a></li>
+            <li><a href="#arcade" class="nav-link" data-view-target="arcade" data-i18n="nav.arcade">Yelo Arcade</a></li>
+            <li><a href="#about" class="nav-link" data-view-target="about" data-i18n="nav.about">About & Contact</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- RIGHT SIDE: LANGUAGE SWITCHER & MOBILE TOGGLE -->
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div class="lang-toggle-group" role="region" aria-label="Language selection">
+            <button class="lang-toggle-btn active" data-lang="en" aria-label="Switch to English">EN</button>
+            <button class="lang-toggle-btn" data-lang="ar" aria-label="التحويل إلى العربية">عربي</button>
+          </div>
+
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER MENU -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <a href="#home" class="nav-link active" data-view-target="home" data-i18n="nav.home">Home</a>
+    <a href="#archive" class="nav-link" data-view-target="archive" data-i18n="nav.archive">The Archive</a>
+    <a href="#tales" class="nav-link" data-view-target="tales" data-i18n="nav.tales">Your Relegated Tales</a>
+    <a href="#courtroom" class="nav-link" data-view-target="courtroom" data-i18n="nav.courtroom">The Courtroom</a>
+    <a href="#arcade" class="nav-link" data-view-target="arcade" data-i18n="nav.arcade">Yelo Arcade</a>
+    <a href="#about" class="nav-link" data-view-target="about" data-i18n="nav.about">About & Contact</a>
+  </div>
+
+  <!-- MAIN PAGE CONTAINER (SINGLE PAGE APPLICATION VIEWS) -->
+  <main id="appContent">
+
+    <!-- ===================================================================
+         VIEW 1: HOME PAGE
+         =================================================================== -->
+    <section id="view-home" class="page-view">
+      <!-- HERO SECTION -->
+      <section class="hero-section">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-content">
+              <span class="section-badge" data-i18n="hero.badge">DOSSIER #2022-YELO • CONFIDENTIAL SATIRE</span>
+              <h1 class="hero-title" data-i18n="hero.title">THE FINAL WHISTLE</h1>
+              <p class="hero-subtitle" data-i18n="hero.subtitle">
+                An editorial tribute to the most dramatic plot twist in Gulf football history. When titan status met
+                yellow card reality.
+              </p>
+              <div class="hero-actions">
+                <a href="#archive" class="btn btn-primary" data-view-target="archive">
+                  <span data-i18n="hero.primaryCta">ENTER THE ARCHIVE</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <a href="#videoSection" class="btn btn-secondary">
+                  <span data-i18n="hero.secondaryCta">WATCH FINAL REPLAY</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- ARCHIVE IMAGE FRAME -->
+            <div class="hero-frame-container">
+              <div class="archive-frame">
+                <div class="archive-frame-header">
+                  <span data-i18n="hero.fileIdLabel">FILE ID: REF-2022-MATCH30</span>
+                  <span data-i18n="hero.statusLabel">STATUS: CLASSIFIED</span>
+                </div>
+                <div class="archive-image-wrapper">
+                  <img src="/images/referee-orange.jpg" alt="Football referee in orange shirt gesturing on the pitch"
+                    id="heroRefereeImg" />
+                  <img src="/images/referee-gold.jpg" alt="Football referee in gold shirt, alternate archive exhibit"
+                    class="hero-img-secondary" aria-hidden="true" />
+                  <div class="archive-stamp" data-i18n="hero.evidenceStamp">EVIDENCE #2022</div>
+                </div>
+                <p class="archive-caption" data-i18n="hero.imageCaption">
+                  EXHIBIT A: Referee Whistle Moment (Matchday 30, June 2022)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BREAKING NEWS TICKER -->
+      <div class="ticker-section" aria-label="Satirical headlines ticker" role="marquee">
+        <div class="ticker-track" id="tickerTrack">
+          <!-- Dynamically populated + duplicated from content.js -->
+        </div>
+      </div>
+
+      <!-- VIDEO SECTION -->
+      <section class="video-section" id="videoSection">
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 2.5rem;">
+            <span class="section-badge" data-i18n="videoSection.videoBadge">RESTORED VAR FOOTAGE</span>
+            <h2 class="section-title" data-i18n="videoSection.title">THE 90TH MINUTE ANATOMY</h2>
+            <p class="section-subtitle" style="margin: 0 auto;" data-i18n="videoSection.subtitle">
+              High-definition breakdown of the seconds before the fateful whistle echoed across the stadium.
+            </p>
+          </div>
+
+          <div class="video-container">
+            <div class="video-overlay-loader" id="videoLoader">
+              <div class="spinner"></div>
+              <span style="font-size: 0.9rem; color: var(--text-muted);" data-i18n="videoSection.loadingText">
+                Loading archive tape from 2022 vault...
+              </span>
+            </div>
+            <video id="archiveVideoPlayer" controls poster="/images/referee-orange.jpg" preload="metadata">
+              <source src="/videos/DLVideo.mp4"
+                type="video/mp4" />
+              Your browser does not support video playback.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <!-- SATIRICAL STATISTICS GRID -->
+      <section class="stats-section">
+        <div class="container">
+          <div style="margin-bottom: 2.5rem;">
+            <span class="section-badge" data-i18n="statsSection.badge">NUMERICAL AUDIT</span>
+            <h2 class="section-title" data-i18n="statsSection.title">ARCHIVAL METRICS & NUMBERS</h2>
+            <p class="section-subtitle" data-i18n="statsSection.subtitle">
+              Mathematical evidence collected during the 2021/2022 campaign.
+            </p>
+          </div>
+
+          <div class="stats-grid" id="statsGridContainer">
+            <!-- Dynamically populated from content.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- VISUAL TIMELINE -->
+      <section class="timeline-section">
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 2.5rem;">
+            <span class="section-badge" data-i18n="timelineSection.badge">SEASON ARC</span>
+            <h2 class="section-title" data-i18n="timelineSection.title">CHRONOLOGY OF DOWNTURN</h2>
+            <p class="section-subtitle" style="margin: 0 auto;" data-i18n="timelineSection.subtitle">
+              From high expectations in autumn to Yelo League registration in summer.
+            </p>
+          </div>
+
+          <div class="timeline-wrapper" id="timelineContainer">
+            <!-- Dynamically populated from content.js -->
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ===================================================================
+         VIEW 2: THE ARCHIVE PAGE
+         =================================================================== -->
+    <section id="view-archive" class="page-view" style="display: none; padding-top: 8rem;">
+      <div class="container">
+        <div style="margin-bottom: 2.5rem;">
+          <span class="section-badge" data-i18n="archivePage.badge">EVIDENCE DATABASE</span>
+          <h1 class="section-title" data-i18n="archivePage.title">CONFIDENTIAL EVIDENCE VAULT</h1>
+          <p class="section-subtitle" data-i18n="archivePage.subtitle">
+            Browse inspectable records, match sheets, VAR screen captures, and ref audio logs.
+          </p>
+
+          <!-- CATEGORY FILTERS -->
+          <div class="gallery-filters" id="archiveFilterBar">
+            <button class="filter-btn active" data-filter="all" data-i18n="archivePage.filterAll">ALL EVIDENCE</button>
+            <button class="filter-btn" data-filter="VAR DISPUTES" data-i18n="archivePage.filterVar">VAR
+              DISPUTES</button>
+            <button class="filter-btn" data-filter="AUDIO TAPES" data-i18n="archivePage.filterAudio">AUDIO
+              TAPES</button>
+            <button class="filter-btn" data-filter="TACTICAL ACCIDENTS" data-i18n="archivePage.filterTactics">TACTICAL
+              ACCIDENTS</button>
+          </div>
+        </div>
+
+        <div class="evidence-grid" id="evidenceGrid">
+          <!-- Dynamically populated from content.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VIEW 2b: YOUR RELEGATED TALES (OPEN FAN STORY BOARD)
+         =================================================================== -->
+    <section id="view-tales" class="page-view" style="display: none; padding-top: 8rem;">
+      <div class="container">
+        <div style="margin-bottom: 2.5rem;">
+          <h1 class="section-title" data-i18n="talesPage.title">YOUR RELEGATED TALES</h1>
+          <p class="section-subtitle" data-i18n="talesPage.subtitle">
+            Write your name, drop your funniest 2022 tale, and let the archive vote it up or down.
+          </p>
+        </div>
+
+        <!-- ADD A TALE -->
+        <div class="glass-panel" style="padding: 2rem; margin-bottom: 2.5rem;">
+          <h2 style="font-size: 1.2rem; margin-bottom: 1.25rem;" data-i18n="talesPage.addTaleTitle">ADD YOUR TALE</h2>
+          <form id="taleForm">
+            <div class="form-group">
+              <input type="text" id="taleNameInput" class="form-control" required
+                data-i18n="talesPage.namePlaceholder" placeholder="Your Name / Alias" />
+            </div>
+            <div class="form-group">
+              <textarea id="taleTextInput" class="form-control" rows="3" required
+                data-i18n="talesPage.taleTextPlaceholder" placeholder="Write your tale here..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" data-i18n="talesPage.publishButton">PUBLISH TALE</button>
+          </form>
+        </div>
+
+        <!-- TALES LIST -->
+        <h2 style="font-size: 1.1rem; margin-bottom: 1.25rem; color: var(--text-muted);" data-i18n="talesPage.listTitle">PUBLISHED TALES</h2>
+        <div id="talesListContainer"></div>
+
+        <p style="font-size: 0.78rem; color: var(--text-muted); font-style: italic; margin-top: 1.5rem;" data-i18n="talesPage.syncNote">
+          Tales currently sync only within this browser.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VIEW 3: THE COURTROOM PAGE
+         =================================================================== -->
+    <section id="view-courtroom" class="page-view" style="display: none; padding-top: 8rem;">
+      <div class="container">
+        <div class="courtroom-hero-grid">
+          <div>
+            <span class="section-badge" data-i18n="courtroomPage.badge">ARCHIVE TRIBUNAL</span>
+            <h1 class="section-title" data-i18n="courtroomPage.title">THE RELEGATION APPEAL HEARING</h1>
+            <p class="section-subtitle" data-i18n="courtroomPage.subtitle">
+              Examine legal claims, review defense arguments, and cast your unofficial verdict.
+            </p>
+
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem;" data-i18n="courtroomPage.presidingText">
+              Presiding: Official Fan Archival Tribunal. Exhibits below are submitted for comedic evaluation.
+            </p>
+
+            <!-- CASE 1 -->
+            <div class="glass-panel"
+              style="padding: 1.5rem; margin-bottom: 1.5rem; border-left: 3px solid var(--yellow-detail);">
+              <h3 style="font-size: 1.1rem; margin-bottom: 0; color: var(--yellow-detail);" id="caseTitle0">
+              </h3>
+            </div>
+            <div id="courtClaimsContainer0" style="margin-bottom: 1.5rem;">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- CASE 1 VERDICT -->
+            <div class="glass-panel verdict-box" style="margin-bottom: 2.5rem;">
+              <h2 style="font-size: 1.25rem; margin-bottom: 0.5rem;" id="verdictTitle0"></h2>
+              <p style="color: var(--text-muted); font-size: 0.95rem;" id="verdictPrompt0"></p>
+              <form id="verdictForm0">
+                <div class="verdict-options" id="verdictOptionsContainer0">
+                  <!-- Dynamically populated -->
+                </div>
+                <button type="submit" class="btn btn-primary" id="verdictButton0"></button>
+              </form>
+              <div id="verdictSuccessAlert0" class="glass-panel"
+                style="display: none; padding: 1rem; margin-top: 1rem; color: var(--accent-acid); border-color: var(--accent-acid);">
+              </div>
+            </div>
+
+            <!-- CASE 2 -->
+            <div class="glass-panel"
+              style="padding: 1.5rem; margin-bottom: 1.5rem; border-left: 3px solid var(--yellow-detail);">
+              <h3 style="font-size: 1.1rem; margin-bottom: 0; color: var(--yellow-detail);" id="caseTitle1">
+              </h3>
+            </div>
+            <div id="courtClaimsContainer1" style="margin-bottom: 1.5rem;">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- CASE 2 VERDICT -->
+            <div class="glass-panel verdict-box">
+              <h2 style="font-size: 1.25rem; margin-bottom: 0.5rem;" id="verdictTitle1"></h2>
+              <p style="color: var(--text-muted); font-size: 0.95rem;" id="verdictPrompt1"></p>
+              <form id="verdictForm1">
+                <div class="verdict-options" id="verdictOptionsContainer1">
+                  <!-- Dynamically populated -->
+                </div>
+                <button type="submit" class="btn btn-primary" id="verdictButton1"></button>
+              </form>
+              <div id="verdictSuccessAlert1" class="glass-panel"
+                style="display: none; padding: 1rem; margin-top: 1rem; color: var(--accent-acid); border-color: var(--accent-acid);">
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="archive-frame">
+              <div class="archive-frame-header">
+                <span data-i18n="courtroomPage.recordingLabel">COURTROOM RECORDING</span>
+                <span data-i18n="courtroomPage.exhibitLabel">EXHIBIT #GAVEL-01</span>
+              </div>
+              <div class="archive-image-wrapper" style="aspect-ratio: 16 / 10;">
+                <img src="/images/courtroom_gavel.jpg" alt="Courtroom gavel on yellow archive files" />
+                <div class="archive-stamp" data-i18n="courtroomPage.confidentialStamp">CONFIDENTIAL</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VIEW 4: YELO ARCADE PAGE (TEASER)
+         =================================================================== -->
+    <section id="view-arcade" class="page-view" style="display: none; padding-top: 8rem;">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <span class="section-badge" data-i18n="arcadePage.teaserNotice">
+            PHASE 1 PREVIEW • MINI-GAMES LAUNCHING IN NEXT ARCHIVE UPDATE
+          </span>
+          <h1 class="section-title" data-i18n="arcadePage.title">YELO RETRO ARCADE</h1>
+          <p class="section-subtitle" style="margin: 0 auto;" data-i18n="arcadePage.subtitle">
+            Interactive mini-games in development. Master the VAR line, blow the ref whistle, and dodge yellow cards.
+          </p>
+        </div>
+
+        <div class="arcade-grid" id="arcadeGridContainer">
+          <!-- Dynamically populated from content.js -->
+        </div>
+
+        <!-- LEADERBOARD / RELEGATED TABLE -->
+        <div class="glass-panel" style="padding: 2rem; margin-top: 3rem;">
+          <h2 style="font-size: 1.35rem; margin-bottom: 1rem;" data-i18n="arcadePage.leaderboard.title">ARCHIVE RANKINGS</h2>
+
+          <div class="gallery-filters" id="leaderboardTabs" style="margin-bottom: 1.5rem;">
+            <button class="filter-btn active" data-tab="top" data-i18n="arcadePage.leaderboard.topTab">TOP PLAYERS</button>
+            <button class="filter-btn" data-tab="relegated" data-i18n="arcadePage.leaderboard.relegatedTab">THE RELEGATED</button>
+          </div>
+
+          <div style="overflow-x: auto; margin-bottom: 1.5rem;">
+            <table id="leaderboardTable" style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+              <thead>
+                <tr style="text-align: left; color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.05em;">
+                  <th style="padding: 0.5rem;">#</th>
+                  <th style="padding: 0.5rem;" data-i18n="arcadePage.leaderboard.colName">NAME</th>
+                  <th style="padding: 0.5rem;" data-i18n="arcadePage.leaderboard.colVar">VAR SCORE</th>
+                  <th style="padding: 0.5rem;" data-i18n="arcadePage.leaderboard.colEscape">ESCAPE DISTANCE</th>
+                  <th style="padding: 0.5rem;" data-i18n="arcadePage.leaderboard.colPenalty">PENALTY SCORE</th>
+                  <th style="padding: 0.5rem;" data-i18n="arcadePage.leaderboard.colRating">RATING</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboardTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="glass-panel" style="padding: 1.25rem; margin-bottom: 1rem;">
+            <div style="font-size: 0.75rem; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.75rem;" data-i18n="arcadePage.leaderboard.yourScoresLabel">YOUR BEST SCORES (THIS BROWSER)</div>
+            <div id="myScoresRow" style="display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.9rem; margin-bottom: 1rem;"></div>
+            <div id="leaderboardJoinArea" style="display: flex; gap: 0.75rem; flex-wrap: wrap;"></div>
+          </div>
+
+          <p style="font-size: 0.78rem; color: var(--text-muted); font-style: italic;" data-i18n="arcadePage.leaderboard.syncNote">
+            Scores currently sync only within this browser.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VIEW 5: ABOUT / CONTACT PAGE
+         =================================================================== -->
+    <section id="view-about" class="page-view" style="display: none; padding-top: 8rem;">
+      <div class="container">
+        <div style="margin-bottom: 3rem;">
+          <span class="section-badge" data-i18n="aboutPage.badge">PROJECT PURPOSE</span>
+          <h1 class="section-title" data-i18n="aboutPage.title">ABOUT THE ARCHIVE & MANIFESTO</h1>
+          <p class="section-subtitle" data-i18n="aboutPage.subtitle">
+            Why we built this editorial homage to one of football's most unforgettable seasons.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- MANIFESTO TEXT -->
+          <div>
+            <div class="glass-panel" style="padding: 2rem;">
+              <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--yellow-detail);"
+                data-i18n="aboutPage.manifestoTitle">
+                THE SATIRICAL MANIFESTO
+              </h2>
+              <p style="color: var(--text-ivory); font-size: 1.05rem; line-height: 1.7;"
+                data-i18n="aboutPage.manifestoText">
+                Great football stories are not only made of gold medals and trophy lifts. True drama lies in the
+                unbelievable plot twists, the 90th-minute heartbreaks, and the collective humor that unites fans across
+                social media. The Swamp Archive is a high-fashion, tongue-in-cheek celebration of football passion.
+              </p>
+            </div>
+          </div>
+
+          <!-- SUBMISSION FORM -->
+          <div>
+            <div class="glass-panel" style="padding: 2rem;">
+              <h2 style="font-size: 1.35rem; margin-bottom: 1.25rem;" data-i18n="aboutPage.contactTitle">
+                SUBMIT YOUR 2022 MEMORIES & EVIDENCE
+              </h2>
+              <form id="submissionForm">
+                <div class="form-group">
+                  <input type="text" id="submissionNameInput" class="form-control" required data-i18n="aboutPage.form.namePlaceholder"
+                    placeholder="Your Name / Alias" />
+                </div>
+                <div class="form-group">
+                  <input type="email" id="submissionEmailInput" class="form-control" required data-i18n="aboutPage.form.emailPlaceholder"
+                    placeholder="Your Email Address" />
+                </div>
+                <div class="form-group">
+                  <textarea id="submissionMessageInput" class="form-control" rows="4" required data-i18n="aboutPage.form.messagePlaceholder"
+                    placeholder="Describe your evidence or story from June 2022..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;" id="submissionSubmitBtn"
+                  data-i18n="aboutPage.form.submitButton">
+                  SEND TO ARCHIVIST
+                </button>
+              </form>
+              <div id="contactSuccessAlert" class="glass-panel"
+                style="display: none; padding: 1rem; margin-top: 1rem; color: var(--accent-acid); text-align: center;"
+                data-i18n="aboutPage.form.successMsg">
+                Thank you! Your submission has been received and queued for archival review.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SATIRICAL CREATOR PROFILE -->
+        <div class="glass-panel creator-profile-card" style="padding: 2rem; margin-top: 2.5rem;">
+          <span class="section-badge" data-i18n="aboutPage.creatorProfile.badge">CREATOR PROFILE</span>
+          <h2 style="font-size: 1.35rem; margin-bottom: 1rem; color: var(--yellow-detail); margin-top: 0.75rem;"
+            data-i18n="aboutPage.creatorProfile.title">
+            THE ARCHIVIST BEHIND THE ARCHIVE
+          </h2>
+          <p style="color: var(--text-ivory); font-size: 1rem; line-height: 1.7;"
+            data-i18n="aboutPage.creatorProfile.bioLines.0">Created by Ghaith Al-Tamimi.</p>
+          <p style="color: var(--text-ivory); font-size: 1rem; line-height: 1.7;"
+            data-i18n="aboutPage.creatorProfile.bioLines.1">A 16-year-old developer who enjoys programming, artificial
+            intelligence, and games.</p>
+          <p style="color: var(--text-ivory); font-size: 1rem; line-height: 1.7;"
+            data-i18n="aboutPage.creatorProfile.bioLines.2">Also an unofficial Al-Ahli fan… allegedly.</p>
+          <p style="color: var(--text-ivory); font-size: 1rem; line-height: 1.7;"
+            data-i18n="aboutPage.creatorProfile.bioLines.3">Single, according to the archive records.</p>
+
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
+            <a href="https://www.tiktok.com/@lkgh" target="_blank" rel="noopener noreferrer"
+              class="btn btn-secondary" id="creatorTiktokBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z" />
+              </svg>
+              <span data-i18n="aboutPage.creatorProfile.tiktokLabel">FOLLOW @lkgh ON TIKTOK</span>
+            </a>
+            <a href="mailto:iGhaithALtamimi@gmail.com"
+              class="btn btn-secondary" id="creatorEmailBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16v16H4z" />
+                <path d="m4 6 8 7 8-7" />
+              </svg>
+              <span data-i18n="aboutPage.creatorProfile.contactEmailLabel">EMAIL THE ARCHIVIST</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- EVIDENCE INSPECTOR MODAL -->
+  <div class="modal-backdrop" id="evidenceModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-content glass-panel">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close inspector modal">&times;</button>
+      <div id="modalBody">
+        <!-- Dynamically injected evidence detail -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ARCADE GAME MODAL: VAR LINE CALIBRATOR -->
+  <div class="modal-backdrop" id="gameModal" aria-hidden="true" role="dialog" aria-labelledby="gameModalTitle">
+    <div class="modal-content glass-panel game-modal-content">
+      <button class="modal-close" id="gameModalCloseBtn" aria-label="Close game">&times;</button>
+      <h2 id="gameModalTitle" style="font-size: 1.3rem; margin-bottom: 1rem;" data-i18n="arcadePage.games.0.title">
+        VAR LINE CALIBRATOR
+      </h2>
+      <div id="gameModalBody">
+        <!-- Dynamically injected by var-line-game.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="#home" class="brand-logo" data-view-target="home">
+            <svg class="brand-whistle-icon" viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+            </svg>
+            <span data-i18n="siteName">THE SWAMP ARCHIVE</span>
+          </a>
+          <!-- MANDATORY DUAL LANGUAGE DISCLAIMER -->
+          <div class="disclaimer-box" id="footerDisclaimerBox">
+            <div data-i18n="disclaimer">Unofficial fan-made satire project. Not affiliated with any club or league.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="font-size: 0.9rem; margin-bottom: 1rem;" data-i18n="footer.quickLinksTitle">NAVIGATION</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+            <li><a href="#home" class="nav-link" data-view-target="home" data-i18n="nav.home">Home</a></li>
+            <li><a href="#archive" class="nav-link" data-view-target="archive" data-i18n="nav.archive">The Archive</a>
+            </li>
+            <li><a href="#courtroom" class="nav-link" data-view-target="courtroom" data-i18n="nav.courtroom">The
+                Courtroom</a></li>
+            <li><a href="#arcade" class="nav-link" data-view-target="arcade" data-i18n="nav.arcade">Yelo Arcade</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size: 0.9rem; margin-bottom: 1rem;" data-i18n="footer.socialsTitle">SHARE ON TIKTOK & X</h4>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn btn-secondary" style="padding: 0.5rem 0.85rem; font-size: 0.8rem;" id="shareBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z" />
+              </svg>
+              <span data-i18n="footer.shareButton">SHARE LINK</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div data-i18n="footer.rights">© 2022-2026 THE SWAMP ARCHIVE. FAN-MADE RELEGATION PROJECT.</div>
+        <div data-i18n="footer.creator">Created by Ghaith Al-Tamimi</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/app.js"></script>
+</body>
+
+</html>
