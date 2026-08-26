@@ -380,19 +380,19 @@ export const CONTENT = {
           en: "[REDACTED]. Clearance pending. Check back soon.",
           ar: "[محجوب]. بانتظار إذن الكشف. ترقبوا قريباً."
         },
-        date: "TBA",
+        date: { en: "CLASSIFIED", ar: "سري" },
         satireTag: { en: "FICTIONAL ARCHIVE ENTRY", ar: "قيد أرشيفي خيالي" }
       },
       {
         id: "ev-5",
         category: "TACTICAL ACCIDENTS",
         categoryAr: "الكوارث التكتيكية",
-        title: { en: "Exhibit #05: The Formation That Shall Not Be Named", ar: "مستند 05: التشكيلة اللي ما نقدر نسميها" },
+        title: { en: "Exhibit #05: The Forbidden Formation", ar: "مستند 05: التشكيلة الممنوعة" },
         desc: {
           en: "[REDACTED]. Full breakdown pending clearance.",
           ar: "[محجوب]. التحليل الكامل بانتظار إذن النشر."
         },
-        date: "TBA",
+        date: { en: "CLASSIFIED", ar: "سري" },
         satireTag: { en: "FICTIONAL ARCHIVE ENTRY", ar: "قيد أرشيفي خيالي" }
       },
       {
@@ -404,7 +404,7 @@ export const CONTENT = {
           en: "[REDACTED]. Recording exists. Not cleared for release.",
           ar: "[محجوب]. التسجيل موجود، بس لسه غير مصرح بنشره."
         },
-        date: "TBA",
+        date: { en: "CLASSIFIED", ar: "سري" },
         satireTag: { en: "FICTIONAL ARCHIVE ENTRY", ar: "قيد أرشيفي خيالي" }
       },
       {
@@ -416,7 +416,7 @@ export const CONTENT = {
           en: "[REDACTED]. Minute 89–90. Details sealed for now.",
           ar: "[محجوب]. الدقيقة 89-90. التفاصيل مختومة حالياً."
         },
-        date: "TBA",
+        date: { en: "CLASSIFIED", ar: "سري" },
         satireTag: { en: "FICTIONAL ARCHIVE ENTRY", ar: "قيد أرشيفي خيالي" }
       }
     ]

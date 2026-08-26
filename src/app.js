@@ -872,7 +872,7 @@ class App {
                 <span>${lang === 'ar' ? 'سري' : 'CLASSIFIED'}</span>
               </div>`
           }
-          <div class="archive-stamp" style="top: 10px; bottom: auto;">${item.date}</div>
+          <div class="archive-stamp" style="top: 10px; bottom: auto;">${typeof item.date === 'object' ? item.date[lang] : item.date}</div>
         </div>
         <div class="evidence-body">
           <div class="evidence-cat">${lang === 'ar' ? item.categoryAr : item.category}</div>
@@ -1076,7 +1076,7 @@ class App {
       ${secretTacticBlock}
       ${secretNoteBlock}
       <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-muted); font-size: 0.8rem; color: var(--text-muted); display: flex; justify-content: space-between;">
-        <span>${evidenceUi.dateArchivedLabel[lang]}: ${item.date}</span>
+        <span>${evidenceUi.dateArchivedLabel[lang]}: ${typeof item.date === 'object' ? item.date[lang] : item.date}</span>
         <span>${evidenceUi.statusLabel[lang]}</span>
       </div>
     `;
