@@ -377,10 +377,9 @@ export const CONTENT = {
         categoryAr: "قرارات الفار",
         title: { en: "Exhibit #04: [CLASSIFIED — Reveal Pending]", ar: "مستند 04: [سري — الكشف قريباً]" },
         desc: {
-          en: "This file is still stuck with the archive's legal team. Word is the truth behind it is funnier than anyone's expecting. Stay close to the archive — new documents are about to drop 😂",
-          ar: "هالمستند لسه عالق عند فريق الأرشيف القانوني. يقولون الحقيقة اللي وراه أطرف بكثير مما تتخيلون. خلوكم قريبين من الأرشيف... قريباً بتنكشف الحقيقة كاملة 😂"
+          en: "[REDACTED]. Clearance pending. Check back soon.",
+          ar: "[محجوب]. بانتظار إذن الكشف. ترقبوا قريباً."
         },
-        image: "/images/referee-orange.jpg",
         date: "TBA",
         satireTag: { en: "FICTIONAL ARCHIVE ENTRY", ar: "قيد أرشيفي خيالي" }
       },
@@ -390,10 +389,9 @@ export const CONTENT = {
         categoryAr: "الكوارث التكتيكية",
         title: { en: "Exhibit #05: The Formation That Shall Not Be Named", ar: "مستند 05: التشكيلة اللي ما نقدر نسميها" },
         desc: {
-          en: "Analysts are still arguing over what this whiteboard actually shows. The full breakdown is coming soon, and honestly it might be the funniest one yet. Keep checking back 👀",
-          ar: "المحللين لسه يتناقشون وش بالضبط رسمة هالسبورة. التحليل الكامل جاي قريب، وبصراحة ممكن يكون أطرف وحدة للحين. خلكم متابعين 👀"
+          en: "[REDACTED]. Full breakdown pending clearance.",
+          ar: "[محجوب]. التحليل الكامل بانتظار إذن النشر."
         },
-        image: "/images/ev-2-tactic.jpg",
         date: "TBA",
         satireTag: { en: "FICTIONAL ARCHIVE ENTRY", ar: "قيد أرشيفي خيالي" }
       },
@@ -403,10 +401,9 @@ export const CONTENT = {
         categoryAr: "تسجيلات الصوت",
         title: { en: "Exhibit #06: The Locker Room Tape (Unreleased)", ar: "مستند 06: تسجيل غرفة الملابس (غير منشور)" },
         desc: {
-          en: "We have it. We're just deciding how much of it is safe to publish. Consider this your official heads-up: more archive drops are coming, and this one's spicy 🔥",
-          ar: "عندنا التسجيل. بس لسه نقرر وش القدر اللي نقدر ننشره بأمان. اعتبروا هذا تنبيه رسمي: مستندات جديدة جاية للأرشيف، وهذي بالذات فيها طقطقة 🔥"
+          en: "[REDACTED]. Recording exists. Not cleared for release.",
+          ar: "[محجوب]. التسجيل موجود، بس لسه غير مصرح بنشره."
         },
-        image: "/images/ev-3-whistle.png",
         date: "TBA",
         satireTag: { en: "FICTIONAL ARCHIVE ENTRY", ar: "قيد أرشيفي خيالي" }
       },
@@ -416,10 +413,9 @@ export const CONTENT = {
         categoryAr: "قرارات الفار",
         title: { en: "Exhibit #07: The Missing Minute", ar: "مستند 07: الدقيقة المفقودة" },
         desc: {
-          en: "Somewhere between minute 89 and 90, something happened that the archive isn't ready to talk about yet. Soon though. Very soon. Get ready 😂",
-          ar: "بين الدقيقة 89 و90 صار شي الأرشيف لسه مو مستعد يحكي عنه. بس قريب... قريب جداً. استعدوا 😂"
+          en: "[REDACTED]. Minute 89–90. Details sealed for now.",
+          ar: "[محجوب]. الدقيقة 89-90. التفاصيل مختومة حالياً."
         },
-        image: "/images/courtroom_gavel.jpg",
         date: "TBA",
         satireTag: { en: "FICTIONAL ARCHIVE ENTRY", ar: "قيد أرشيفي خيالي" }
       }
@@ -698,8 +694,8 @@ export const CONTENT = {
       ar: "بيان المعجبين"
     },
     manifestoText: {
-      en: "Honestly, football stories don't need trophies to be legendary. The real drama is in the plot twists nobody saw coming, the 90th-minute heartbreak, and the jokes that end up funnier than the match itself. The Swamp Archive is just us keeping all of that alive, one meme at a time.",
-      ar: "بصراحة، أحلى قصص الكرة مو لازم تكون فيها كأس. الدراما الحقيقية بالمنعطفات اللي محد توقعها، وكسرة الخاطر بالدقيقة 90، والتعليقات اللي طلعت أطرف من المباراة نفسها. أرشيف المستنقع بس طريقتنا إننا نحافظ على كل ذكرى بميم."
+      en: "Great football stories are not only made of gold medals and trophy lifts. True drama lies in the unbelievable plot twists, the 90th-minute heartbreaks, and the collective humor that unites fans across social media. The Swamp Archive is a high-fashion, tongue-in-cheek celebration of football passion.",
+      ar: "قصص كرة القدم العظيمة لا تقتصر على الميداليات والكؤوس فقط، بل تكمن الدراما الحقيقية في المنعطفات غير المتوقعة، واللحظات الحابسة للأنفاس في الدقيقة 90، والروح المرحة التي تجمع الجماهير. أرشيف المستنقع هو تكريم بأسلوب فاخر ومرح للشغف الكروي."
     },
     manifestoClosingLine: {
       en: "Relegation is a shame that lives forever.",
@@ -742,8 +738,8 @@ export const CONTENT = {
         ar: "الأرشيفي وراء الأرشيف"
       },
       bioText: {
-        en: "This whole thing was built by Ghaith Al-Tamimi — a 16-year-old who's into programming, AI, and games, and yeah, an unofficial Al-Ahli fan (allegedly). Single, per the archive's official records.",
-        ar: "الموقع كله سواه غيث التميمي، عمره 16 سنة ويحب البرمجة والذكاء الاصطناعي والألعاب، ومشجع غير رسمي للأهلي (حسب الأرشيف). أعزب، وفقًا لسجلات الموقع الرسمية."
+        en: "Created by Ghaith Al-Tamimi. A 16-year-old developer who enjoys programming, artificial intelligence, and games. Also an unofficial Al-Ahli fan… allegedly. Single, according to the archive records.",
+        ar: "من إنشاء غيث التميمي. مطور عمره 16 سنة، يحب البرمجة والذكاء الاصطناعي والألعاب. ومشجع غير رسمي للنادي الأهلي… حسب الأرشيف. أعزب، وفقًا لسجلات الموقع."
       },
       tiktokHandle: "@lkgh",
       tiktokUrl: "https://www.tiktok.com/@lkgh",

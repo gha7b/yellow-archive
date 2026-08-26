@@ -865,7 +865,13 @@ class App {
     grid.innerHTML = items.map(item => `
       <div class="glass-panel evidence-card" data-evidence-id="${item.id}">
         <div class="evidence-thumb">
-          <img src="${item.image}" alt="${item.title[lang]}" />
+          ${item.image
+            ? `<img src="${item.image}" alt="${item.title[lang]}" />`
+            : `<div class="evidence-classified">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                <span>${lang === 'ar' ? 'سري' : 'CLASSIFIED'}</span>
+              </div>`
+          }
           <div class="archive-stamp" style="top: 10px; bottom: auto;">${item.date}</div>
         </div>
         <div class="evidence-body">
@@ -1056,7 +1062,13 @@ class App {
       </div>
       <div class="archive-frame" style="margin-bottom: 1.5rem;">
         <div class="archive-image-wrapper" style="aspect-ratio: 16 / 9;">
-          <img src="${item.image}" alt="${item.title[lang]}" />
+          ${item.image
+            ? `<img src="${item.image}" alt="${item.title[lang]}" />`
+            : `<div class="evidence-classified evidence-classified--large">
+                <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                <span>${lang === 'ar' ? 'الصورة سرية للحين' : 'IMAGE CLASSIFIED FOR NOW'}</span>
+              </div>`
+          }
         </div>
       </div>
       <p style="font-size: 1rem; color: var(--text-ivory); line-height: 1.7;">${item.desc[lang]}</p>
