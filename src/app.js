@@ -3,7 +3,7 @@ import { i18n } from './i18n.js';
 import { VarLineGame } from './var-line-game.js';
 import { EscapeRunnerGame } from './escape-runner-game.js';
 import { ComebackPenaltyGame } from './comeback-penalty-game.js';
-import { db } from './firebase.js';
+import { db, auth } from './firebase.js';
 import {
   collection,
   doc,
@@ -14,27 +14,44 @@ import {
   onSnapshot,
   increment
 } from 'firebase/firestore';
+import { signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 
 // ---------------------------------------------------------------------------
 // SHARED IDENTITY
-// No login system on this site, so "who am I" is a random id generated once
-// per browser and stored locally. It's used to (a) know which leaderboard row
-// is "mine" and (b) let a tale's author edit/delete only their own tale. It's
-// a best-effort identity, not real authentication — good enough for a fan site.
+// No sign-up/login screen on this site, but "who am I" is now a REAL Firebase
+// Anonymous Auth identity (auth.uid) instead of a value the browser just made
+// up. It's used to (a) know which leaderboard row is "mine" and (b) let a
+// tale's author edit/delete only their own tale — and because it's backed by
+// Firebase Auth, the Firestore Security Rules can verify it server-side, so a
+// visitor can no longer fake being someone else by editing a field.
 // ---------------------------------------------------------------------------
-const OWNER_ID_KEY = 'yelo_owner_id';
+let currentUid = null;
+let resolveAuthReady;
+const authReadyPromise = new Promise((resolve) => { resolveAuthReady = resolve; });
+
+function startAnonymousAuth(onReady) {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      currentUid = user.uid;
+      resolveAuthReady(user.uid);
+      if (onReady) onReady();
+    }
+  });
+  signInAnonymously(auth).catch((err) => console.error('Anonymous sign-in failed:', err));
+}
+
+function getOwnerId() {
+  return currentUid;
+}
+
+async function ensureOwnerId() {
+  if (currentUid) return currentUid;
+  return authReadyPromise;
+}
+
 // Shared "who am I" name — set by either the arcade leaderboard join box or the
 // tales publish form, and read back by both, so the name typed once carries over.
 const SHARED_NAME_KEY = 'yelo_shared_display_name';
-
-function getOwnerId() {
-  let id = localStorage.getItem(OWNER_ID_KEY);
-  if (!id) {
-    id = 'u_' + Math.random().toString(36).slice(2, 12);
-    localStorage.setItem(OWNER_ID_KEY, id);
-  }
-  return id;
-}
 
 function getSharedName() {
   return localStorage.getItem(SHARED_NAME_KEY) || '';
@@ -88,7 +105,7 @@ function lbGetMyEntry() {
 async function lbJoinOrUpdate(name) {
   const scores = lbGetMyScores();
   const rating = lbComputeRating(scores);
-  const myId = getOwnerId();
+  const myId = await ensureOwnerId();
   const entry = { id: myId, name, ...scores, rating, updatedAt: Date.now() };
   await setDoc(doc(db, LEADERBOARD_COLLECTION, myId), entry);
   setSharedName(name);
@@ -133,7 +150,7 @@ function talesIsMine(id) {
 }
 
 async function talesAdd(name, text) {
-  const ownerId = getOwnerId();
+  const ownerId = await ensureOwnerId();
   await addDoc(collection(db, TALES_COLLECTION), {
     name,
     text,
@@ -192,7 +209,14 @@ class App {
     // 5. Render Dynamic Content
     this.renderAllDynamicContent();
 
-    // 5b. Start real-time Firestore sync for the shared leaderboard & tales board
+    // 5b. Sign in anonymously (real Firebase identity, no signup screen) then
+    // start real-time Firestore sync for the shared leaderboard & tales board
+    startAnonymousAuth(() => {
+      // Once our identity resolves, re-render so "mine" edit/delete buttons
+      // and the leaderboard's own-row highlight pick it up immediately.
+      if (this.currentView === 'arcade') this.renderLeaderboard();
+      if (this.currentView === 'tales') this.renderTales();
+    });
     startLeaderboardSync(() => { if (this.currentView === 'arcade') this.renderLeaderboard(); });
     startTalesSync(() => { if (this.currentView === 'tales') this.renderTales(); });
 
@@ -317,7 +341,7 @@ class App {
   setupRouter() {
     const handleHash = () => {
       const hash = window.location.hash.replace('#', '') || 'home';
-      const validViews = ['home', 'archive', 'tales', 'courtroom', 'arcade', 'about'];
+      const validViews = ['home', 'archive', 'tales', 'courtroom', 'arcade', 'about', 'privacy', 'terms', 'ip'];
       if (validViews.includes(hash)) {
         this.switchView(hash);
       } else {
@@ -543,7 +567,29 @@ class App {
     // 7. Render Tales board
     this.renderTales();
 
+    // 8. Render legal pages (Privacy / Terms / IP)
+    this.renderLegalPages();
+
     this.applyRevealToNewElements();
+  }
+
+  renderLegalPages() {
+    const lang = i18n.getLang();
+    ['privacy', 'terms', 'ip'].forEach((key) => {
+      const page = CONTENT.legalPages[key];
+      if (!page) return;
+      const titleEl = document.getElementById(`legalTitle-${key}`);
+      const updatedEl = document.getElementById(`legalUpdated-${key}`);
+      const bodyEl = document.getElementById(`legalBody-${key}`);
+      if (titleEl) titleEl.textContent = page.title[lang];
+      if (updatedEl) updatedEl.textContent = page.updated[lang];
+      if (bodyEl) {
+        bodyEl.innerHTML = page.sections.map(section => `
+          <h2 style="font-size: 1.1rem; margin: 1.75rem 0 0.5rem; color: var(--yellow-detail);">${section.heading[lang]}</h2>
+          <p style="color: var(--text-ivory); font-size: 0.95rem; line-height: 1.7;">${section.body[lang]}</p>
+        `).join('');
+      }
+    });
   }
 
   renderTales() {

@@ -12,6 +12,7 @@
  */
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDaqN_jQrut1Z9SXwZWv4zW980FhRH3qoU",
@@ -25,3 +26,8 @@ const firebaseConfig = {
 
 export const firebaseApp = initializeApp(firebaseConfig);
 export const db = getFirestore(firebaseApp);
+// Anonymous auth gives every visitor a real, unforgeable Firebase identity
+// (auth.uid) without any sign-up flow. It's what lets Firestore Security
+// Rules actually enforce "only the author can edit/delete their own tale" —
+// a client can no longer just claim to be someone else by editing a field.
+export const auth = getAuth(firebaseApp);

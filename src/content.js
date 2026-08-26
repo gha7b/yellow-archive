@@ -268,26 +268,22 @@ export const CONTENT = {
   talesPage: {
     title: { en: "YOUR RELEGATED TALES", ar: "سوالفكم الهابطة" },
     subtitle: {
-      en: "Write your name, drop your funniest 2022 tale, and let the archive vote it up or down.",
-      ar: "اكتب اسمك، حط أطرف سالفة عندك من موسم 2022، وخل الأرشيف يصوت لها لايك أو دس لايك."
+      en: "Write your name and drop your funniest 2022 tale. (Write whatever you want — it doesn't have to be true.)",
+      ar: "اكتب اسمك، وحط أطرف سالفة عندك من موسم 2022. (اكتب اللي يجيك في بالك حتى لو مو حقيقية.)"
     },
     addTaleTitle: { en: "ADD YOUR TALE", ar: "أضف سالفتك" },
     namePlaceholder: { en: "Your Name / Alias", ar: "اسمك / لقبك" },
     taleTextPlaceholder: { en: "Write your tale here...", ar: "اكتب سالفتك هنا..." },
     publishButton: { en: "PUBLISH TALE", ar: "انشر السالفة" },
     listTitle: { en: "PUBLISHED TALES", ar: "السوالف المنشورة" },
-    emptyState: { en: "No tales yet — be the first to embarrass everyone.", ar: "ما فيه سوالف بعد — كن أول واحد يفضح الكل." },
+    emptyState: { en: "No tales yet — drop us one, doesn't even have to be about Al-Ahli.", ar: "مافيه سوالف للحين - اهبد لنا سالفة ترا مو لازم عن الأهلي." },
     byLabel: { en: "by", ar: "بواسطة" },
     votedNote: { en: "Thanks for voting.", ar: "شكراً على تصويتك." },
     editButton: { en: "EDIT", ar: "تعديل" },
     deleteButton: { en: "DELETE", ar: "حذف" },
     saveButton: { en: "SAVE", ar: "حفظ" },
     cancelButton: { en: "CANCEL", ar: "إلغاء" },
-    deleteConfirm: { en: "Delete this tale? This cannot be undone.", ar: "تحذف هذي السالفة؟ ما تقدر ترجعها بعدين." },
-    syncNote: {
-      en: "Tales are shared live with every visitor. You can edit or delete only the tales you personally posted.",
-      ar: "السوالف مشتركة فعلياً مع كل الزوار مباشرة. تقدر تعدل أو تحذف بس السوالف اللي نشرتها انت بنفسك."
-    }
+    deleteConfirm: { en: "Delete this tale? This cannot be undone.", ar: "تحذف هذي السالفة؟ ما تقدر ترجعها بعدين." }
   },
 
   // THE ARCHIVE PAGE CONTENT
@@ -408,8 +404,7 @@ export const CONTENT = {
             desc: {
               en: "Defense claims space physics were manipulated during away matches.",
               ar: "دفاع النادي يدعي أن أبعاد الملعب تتسع غريباً في المباريات الخارجية."
-            },
-            satireTag: { en: "JUST FOR LAUGHS — NOT A REAL RULING", ar: "للتسلية فقط — وليس حكماً حقيقياً" }
+            }
           },
           {
             num: "CLAIM 02",
@@ -417,8 +412,7 @@ export const CONTENT = {
             desc: {
               en: "Mathematical explanation for 19 shots striking the woodwork in 10 games.",
               ar: "التفسير التكتيكي لارتطام 19 تسديدة بالعارضة والقائمين خلال 10 مباريات."
-            },
-            satireTag: { en: "JUST FOR LAUGHS — NOT A REAL RULING", ar: "للتسلية فقط — وليس حكماً حقيقياً" }
+            }
           }
         ],
         verdictSection: {
@@ -430,12 +424,12 @@ export const CONTENT = {
           options: [
             { id: "c1v1", en: "GUILTY — the pitch conspiracy is real", ar: "مذنب — نظرية الملعب المتحرك صحيحة" },
             { id: "c1v2", en: "NOT GUILTY — just bad finishing", ar: "غير مذنب — بس تسديد ضعيف مو أكثر" },
-            { id: "c1v3", en: "CASE DISMISSED — for comedic value only", ar: "القضية مرفوضة — للتسلية فقط" }
+            { id: "c1v3", en: "CASE DISMISSED — Yelo was brutal for Al-Ahli", ar: "القضية مرفوضة — يلو كان رهيب للأهلي" }
           ],
           voteButton: { en: "SUBMIT VERDICT", ar: "إرسال الحكم" },
           successMessage: {
-            en: "Verdict logged! Most archive visitors think the pitch was just fine.",
-            ar: "تم تسجيل حكمك! أغلب زوار الأرشيف يشوفون أن الملعب كان طبيعي تماماً."
+            en: "Verdict logged! (87% of archive visitors think the pitch was just fine.)",
+            ar: "سجلنا حكمك! (87% من زوار الأرشيف يشوفون أن الملعب كان طبيعي تماماً.)"
           }
         }
       },
@@ -451,8 +445,7 @@ export const CONTENT = {
             desc: {
               en: "Fan council submits a full spreadsheet proving the added time was miscounted.",
               ar: "مجلس الجماهير يقدم جدول بيانات كامل يثبت أن الوقت المحتسب كان محسوباً غلط."
-            },
-            satireTag: { en: "JUST FOR LAUGHS — NOT A REAL RULING", ar: "للتسلية فقط — وليس حكماً حقيقياً" }
+            }
           },
           {
             num: "CLAIM 02",
@@ -460,8 +453,7 @@ export const CONTENT = {
             desc: {
               en: "Witnesses report a sudden and suspicious increase in stadium clock velocity.",
               ar: "شهود عيان يبلغون عن تسارع مفاجئ ومريب في سرعة ساعة الملعب."
-            },
-            satireTag: { en: "JUST FOR LAUGHS — NOT A REAL RULING", ar: "للتسلية فقط — وليس حكماً حقيقياً" }
+            }
           }
         ],
         verdictSection: {
@@ -473,12 +465,12 @@ export const CONTENT = {
           options: [
             { id: "c2v1", en: "GUILTY — the clock was rigged", ar: "مذنب — الساعة كانت متلاعب فيها" },
             { id: "c2v2", en: "NOT GUILTY — the ref just miscounted", ar: "غير مذنب — الحكم غلط بالحساب مو أكثر" },
-            { id: "c2v3", en: "CASE DISMISSED — for comedic value only", ar: "القضية مرفوضة — للتسلية فقط" }
+            { id: "c2v3", en: "CASE DISMISSED — Yelo was brutal for Al-Ahli", ar: "القضية مرفوضة — يلو كان رهيب للأهلي" }
           ],
           voteButton: { en: "SUBMIT VERDICT", ar: "إرسال الحكم" },
           successMessage: {
-            en: "Verdict logged! Most archive visitors are still side-eyeing that stadium clock.",
-            ar: "تم تسجيل حكمك! أغلب زوار الأرشيف لسه يشكون بساعة الملعب."
+            en: "Verdict logged! (79% of archive visitors are still side-eyeing that stadium clock.)",
+            ar: "سجلنا حكمك! (79% من زوار الأرشيف لسه يشكون بساعة الملعب.)"
           }
         }
       }
@@ -601,11 +593,7 @@ export const CONTENT = {
       colEscape: { en: "ESCAPE DISTANCE", ar: "مسافة الهروب" },
       colPenalty: { en: "PENALTY SCORE", ar: "نتيجة الركلات" },
       colRating: { en: "RATING", ar: "التقييم" },
-      emptyState: { en: "No one has joined the table yet — be the first.", ar: "محد انضم للجدول بعد — كن أول واحد." },
-      syncNote: {
-        en: "This leaderboard is shared live across every visitor's device.",
-        ar: "هذي اللوحة مشتركة فعلياً مباشرة بين أجهزة كل الزوار."
-      }
+      emptyState: { en: "No one has joined the table yet — be the first.", ar: "محد انضم للجدول للحين - خلك اول واحد." }
     },
     // STRINGS FOR THE PLAYABLE "THE COMEBACK PENALTY" SHOOTOUT GAME
     penaltyUi: {
@@ -723,6 +711,180 @@ export const CONTENT = {
     creator: {
       en: "Created by Ghaith Al-Tamimi",
       ar: "من إنشاء غيث التميمي"
+    },
+    legalLinks: {
+      privacy: { en: "Privacy Policy", ar: "سياسة الخصوصية" },
+      terms: { en: "Terms & Conditions", ar: "الشروط والأحكام" },
+      ip: { en: "Intellectual Property", ar: "حقوق الملكية الفكرية" }
+    }
+  },
+
+  // LEGAL PAGES (Privacy Policy / Terms & Conditions / Intellectual Property)
+  legalPages: {
+    privacy: {
+      title: { en: "PRIVACY POLICY", ar: "سياسة الخصوصية" },
+      updated: { en: "Last updated: August 2026", ar: "آخر تحديث: أغسطس 2026" },
+      sections: [
+        {
+          heading: { en: "Overview", ar: "مقدمة" },
+          body: {
+            en: "The Swamp Archive is an unofficial fan-made entertainment project by a single developer (Ghaith Al-Tamimi) — not affiliated with any club, federation, or official body. This policy explains what data we collect and why.",
+            ar: "أرشيف المستنقع هو موقع تسلية غير رسمي من صنع معجب واحد (غيث التميمي)، ومو تابع لأي نادي أو اتحاد أو جهة رسمية. هذي السياسة توضح لك أي بيانات نجمعها وليش."
+          }
+        },
+        {
+          heading: { en: "What We Collect", ar: "البيانات اللي نجمعها" },
+          body: {
+            en: "If you publish a tale or join the arcade leaderboard, we store the name and text/score you enter, along with an anonymous random identifier automatically generated in your browser (via Firebase) so we can tell that a tale or score is \"yours\" and let you edit or delete it — this identifier isn't linked to your real name, email, or anything that personally identifies you. If you use the contact form, whatever you type (name, email, message) is sent directly to the site owner's inbox and isn't stored on the site itself.",
+            ar: "إذا نشرت سالفة أو انضممت للوحة المتصدرين، نخزن الاسم والنص أو النتيجة اللي كتبتها، مع معرّف عشوائي مجهول يتولد تلقائياً بمتصفحك (عن طريق خدمة Firebase) عشان بس نعرف إنه السالفة أو النتيجة \"لك\" فتقدر تعدلها أو تحذفها — هذا المعرّف مب مرتبط باسمك الحقيقي أو بريدك أو أي شي يعرّف عليك شخصياً. إذا استخدمت نموذج التواصل، البيانات اللي تكتبها (اسمك، بريدك، رسالتك) تنرسل مباشرة لبريد صاحب الموقع ولا تُخزن على الموقع نفسه."
+          }
+        },
+        {
+          heading: { en: "Your Content Is Public", ar: "محتواك يكون عام" },
+          body: {
+            en: "Anything you publish — name, tale, or score — is visible to every visitor. Don't include real personal details (phone number, address, etc.) in the name or tale you post.",
+            ar: "أي اسم أو سالفة أو نتيجة تنشرها بالموقع تكون ظاهرة لجميع الزوار — لا تكتب معلومات شخصية حقيقية (رقم جوال، عنوان، إلخ) بالاسم أو السالفة اللي تنشرها."
+          }
+        },
+        {
+          heading: { en: "Where Data Is Stored", ar: "وين تُخزن البيانات" },
+          body: {
+            en: "Tales and leaderboard data are stored on Google's Firebase cloud service. The site itself is hosted on Vercel.",
+            ar: "بيانات السوالف ولوحة المتصدرين تُخزن على خدمة Google Firebase السحابية. والموقع نفسه مستضاف عبر Vercel."
+          }
+        },
+        {
+          heading: { en: "What We Don't Do", ar: "اللي ما نسويه" },
+          body: {
+            en: "We don't sell your data, we don't run ads, and we don't track you with marketing tools. The site is purely for fun and has no real login/account system.",
+            ar: "ما نبيع بياناتك، ما نستخدم إعلانات، وما نتابعك بأدوات تتبع تسويقية. الموقع أساساً للتسلية بدون تسجيل دخول أو حسابات حقيقية."
+          }
+        },
+        {
+          heading: { en: "Deleting Your Data", ar: "حذف بياناتك" },
+          body: {
+            en: "You can delete your own tale yourself from the same browser you posted it from (the \"Delete\" button). For anything else, or if you can't delete it yourself, email iGhaithALtamimi@gmail.com and we'll remove it manually.",
+            ar: "تقدر تحذف سالفتك بنفسك من نفس المتصفح اللي نشرتها فيه (زر \"حذف\"). إذا تبي حذف أي بيانات ثانية أو ماقدرت تحذفها بنفسك، راسلنا على iGhaithALtamimi@gmail.com وبنحذفها يدوياً."
+          }
+        },
+        {
+          heading: { en: "Children", ar: "الأطفال" },
+          body: {
+            en: "This is a general-audience entertainment site and isn't specifically directed at children. If you're under 18, check with a parent or guardian before submitting any personal information anywhere on the site.",
+            ar: "هذا موقع تسلية عام وما يستهدف تحديداً الأطفال. إذا عمرك أقل من 18 سنة، تكلم مع أهلك قبل ما تكتب أي معلومة شخصية بأي مكان بالموقع."
+          }
+        },
+        {
+          heading: { en: "Changes to This Policy", ar: "تحديثات على السياسة" },
+          body: {
+            en: "We may update this page from time to time. Any changes will be reflected here directly.",
+            ar: "ممكن نحدث هذي الصفحة من وقت لوقت. أي تغييرات بتنعكس هنا مباشرة."
+          }
+        },
+        {
+          heading: { en: "Contact", ar: "تواصل معنا" },
+          body: {
+            en: "For any privacy questions, email iGhaithALtamimi@gmail.com",
+            ar: "لأي استفسار يخص خصوصيتك، راسلنا على iGhaithALtamimi@gmail.com"
+          }
+        }
+      ]
+    },
+    terms: {
+      title: { en: "TERMS & CONDITIONS", ar: "الشروط والأحكام" },
+      updated: { en: "Last updated: August 2026", ar: "آخر تحديث: أغسطس 2026" },
+      sections: [
+        {
+          heading: { en: "Nature of the Site", ar: "طبيعة الموقع" },
+          body: {
+            en: "The Swamp Archive is an unofficial fan-made entertainment project, not affiliated with or endorsed by any football club, federation, league, or official body. All content (text, cases, verdicts, stats) exists purely for entertainment and light satire — none of it is factual or official information.",
+            ar: "أرشيف المستنقع مشروع تسلية غير رسمي من صنع معجب، وغير تابع أو مرتبط بأي نادي كروي أو اتحاد أو دوري أو جهة رسمية. كل المحتوى (نصوص، قضايا، أحكام، إحصائيات) مخصص للتسلية والسخرية الخفيفة بس، ومو معلومات واقعية أو رسمية."
+          }
+        },
+        {
+          heading: { en: "User-Generated Content", ar: "المحتوى اللي ينشره الزوار" },
+          body: {
+            en: "You're fully responsible for any name, tale, or content you publish on the site (on the Tales page or the leaderboard). You may not post: abusive, discriminatory, or harassing content; defamation or false accusations against real people; other people's personal information; or anything otherwise unlawful. We reserve the right to remove any content without prior notice if it violates these terms.",
+            ar: "أنت مسؤول بشكل كامل عن أي اسم أو سالفة أو محتوى تنشره بالموقع (بصفحة سوالفكم الهابطة أو لوحة المتصدرين). ممنوع نشر: محتوى مسيء أو عنصري أو تحرشي، تشهير أو اتهامات كاذبة عن أشخاص حقيقيين، معلومات شخصية لغيرك، أو أي محتوى مخالف للأنظمة. نحتفظ بحق حذف أي محتوى بدون إشعار مسبق إذا خالف هذي الشروط."
+          }
+        },
+        {
+          heading: { en: "No Warranty", ar: "بدون ضمانات" },
+          body: {
+            en: "The site is provided \"as is\" with no warranties of any kind. We don't guarantee uninterrupted uptime and aren't liable for errors, downtime, or data loss.",
+            ar: "الموقع مقدم \"كما هو\" بدون أي ضمانات. ما نضمن إنه بيشتغل طول الوقت بدون انقطاع، وما نتحمل مسؤولية أي خطأ أو انقطاع أو فقدان بيانات."
+          }
+        },
+        {
+          heading: { en: "Acceptable Use", ar: "الاستخدام المسموح" },
+          body: {
+            en: "You may not attempt to hack the site, abuse its systems (the leaderboard, tales board) via bots or automated scripts, or otherwise try to harm other visitors' experience.",
+            ar: "ممنوع محاولة اختراق الموقع، استغلال أنظمته (اللوحة، السوالف) بشكل آلي (بوتات) أو مسيء، أو أي محاولة للإضرار بتجربة باقي الزوار."
+          }
+        },
+        {
+          heading: { en: "Age", ar: "الفئة العمرية" },
+          body: {
+            en: "The site is intended for general entertainment. If you're under 18, make sure you have a parent's or guardian's permission before interacting with sections of the site that require entering your name or any content.",
+            ar: "الموقع مخصص للتسلية العامة. إذا عمرك أقل من 18 سنة، تأكد من أخذ موافقة أهلك قبل ما تتفاعل مع أقسام الموقع اللي تتطلب كتابة اسمك أو أي محتوى."
+          }
+        },
+        {
+          heading: { en: "Changes", ar: "التعديلات" },
+          body: {
+            en: "We may modify these terms at any time; changes take effect as soon as they're posted on this page.",
+            ar: "ممكن نعدل هذي الشروط في أي وقت، والتعديلات تسري فور نشرها بهذي الصفحة."
+          }
+        },
+        {
+          heading: { en: "Contact", ar: "تواصل" },
+          body: {
+            en: "For any questions about these terms, email iGhaithALtamimi@gmail.com",
+            ar: "لأي استفسار عن الشروط، راسلنا على iGhaithALtamimi@gmail.com"
+          }
+        }
+      ]
+    },
+    ip: {
+      title: { en: "INTELLECTUAL PROPERTY", ar: "حقوق الملكية الفكرية" },
+      updated: { en: "Last updated: August 2026", ar: "آخر تحديث: أغسطس 2026" },
+      sections: [
+        {
+          heading: { en: "Original Content", ar: "المحتوى الأصلي" },
+          body: {
+            en: "All original text, design, and code on this site (except where noted otherwise) belong to the site's creator, Ghaith Al-Tamimi, and are protected by intellectual property rights.",
+            ar: "كل النصوص والتصميم والكود الخاص بالموقع (عدا المذكور خلاف ذلك) ملك لصانع الموقع غيث التميمي، ومحمي بحقوق الملكية الفكرية."
+          }
+        },
+        {
+          heading: { en: "Trademarks", ar: "العلامات التجارية" },
+          body: {
+            en: "Any real club names, logos, or trademarks mentioned on this site belong to their respective rightful owners. They're used here solely for commentary and parody purposes, and their use does not imply any affiliation, endorsement, or sponsorship by those parties.",
+            ar: "أي أسماء أندية أو شعارات أو علامات تجارية حقيقية مذكورة بالموقع ملك لأصحابها الشرعيين. استخدامها هنا لأغراض التعليق والسخرية والمحاكاة الساخرة فقط، وما يعني أي ارتباط أو تأييد أو دعم من تلك الجهات لهذا الموقع."
+          }
+        },
+        {
+          heading: { en: "Images & Media", ar: "الصور والوسائط" },
+          body: {
+            en: "Images, video, and audio used on the site are either original, licensed, or used under fair-use principles for commentary and parody. If you own the rights to any content here and would like it removed, contact us and we'll act on it promptly.",
+            ar: "الصور والفيديوهات والملفات الصوتية المستخدمة إما أصلية، أو مرخصة، أو مستخدمة ضمن حدود \"الاستخدام العادل\" لأغراض التعليق والسخرية. إذا كنت تملك حقوق أي محتوى وتحب نشيله، راسلنا وبنتعامل معه فوراً."
+          }
+        },
+        {
+          heading: { en: "User-Submitted Content", ar: "المحتوى اللي ينشره المستخدمون" },
+          body: {
+            en: "You retain ownership of any tale or text you publish on the site, but by publishing it you grant the site a license to display and publish it on its pages for as long as it remains posted.",
+            ar: "أنت تحتفظ بملكية أي سالفة أو نص تنشره بالموقع، لكن بنشرها أنت توافق تمنح الموقع حق عرضها ونشرها ضمن صفحاته طول ما هي منشورة."
+          }
+        },
+        {
+          heading: { en: "Takedown Requests", ar: "طلبات الإزالة" },
+          body: {
+            en: "For any intellectual property claim or question, email iGhaithALtamimi@gmail.com",
+            ar: "لأي مطالبة أو استفسار يخص حقوق الملكية الفكرية، راسلنا على iGhaithALtamimi@gmail.com"
+          }
+        }
+      ]
     }
   }
 };

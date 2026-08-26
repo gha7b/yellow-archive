@@ -257,10 +257,6 @@
         <!-- TALES LIST -->
         <h2 style="font-size: 1.1rem; margin-bottom: 1.25rem; color: var(--text-muted);" data-i18n="talesPage.listTitle">PUBLISHED TALES</h2>
         <div id="talesListContainer"></div>
-
-        <p style="font-size: 0.78rem; color: var(--text-muted); font-style: italic; margin-top: 1.5rem;" data-i18n="talesPage.syncNote">
-          Tales currently sync only within this browser.
-        </p>
       </div>
     </section>
 
@@ -397,10 +393,6 @@
             <div id="myScoresRow" style="display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.9rem; margin-bottom: 1rem;"></div>
             <div id="leaderboardJoinArea" style="display: flex; gap: 0.75rem; flex-wrap: wrap;"></div>
           </div>
-
-          <p style="font-size: 0.78rem; color: var(--text-muted); font-style: italic;" data-i18n="arcadePage.leaderboard.syncNote">
-            Scores currently sync only within this browser.
-          </p>
         </div>
       </div>
     </section>
@@ -507,6 +499,33 @@
       </div>
     </section>
 
+    <!-- ===================================================================
+         LEGAL VIEWS: PRIVACY POLICY / TERMS & CONDITIONS / IP RIGHTS
+         =================================================================== -->
+    <section id="view-privacy" class="page-view" style="display: none; padding-top: 8rem;">
+      <div class="container" style="max-width: 780px;">
+        <h1 class="section-title" id="legalTitle-privacy"></h1>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem;" id="legalUpdated-privacy"></p>
+        <div id="legalBody-privacy"></div>
+      </div>
+    </section>
+
+    <section id="view-terms" class="page-view" style="display: none; padding-top: 8rem;">
+      <div class="container" style="max-width: 780px;">
+        <h1 class="section-title" id="legalTitle-terms"></h1>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem;" id="legalUpdated-terms"></p>
+        <div id="legalBody-terms"></div>
+      </div>
+    </section>
+
+    <section id="view-ip" class="page-view" style="display: none; padding-top: 8rem;">
+      <div class="container" style="max-width: 780px;">
+        <h1 class="section-title" id="legalTitle-ip"></h1>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem;" id="legalUpdated-ip"></p>
+        <div id="legalBody-ip"></div>
+      </div>
+    </section>
+
   </main>
 
   <!-- EVIDENCE INSPECTOR MODAL -->
@@ -557,9 +576,13 @@
             <li><a href="#home" class="nav-link" data-view-target="home" data-i18n="nav.home">Home</a></li>
             <li><a href="#archive" class="nav-link" data-view-target="archive" data-i18n="nav.archive">The Archive</a>
             </li>
+            <li><a href="#tales" class="nav-link" data-view-target="tales" data-i18n="nav.tales">Your Relegated
+                Tales</a></li>
             <li><a href="#courtroom" class="nav-link" data-view-target="courtroom" data-i18n="nav.courtroom">The
                 Courtroom</a></li>
             <li><a href="#arcade" class="nav-link" data-view-target="arcade" data-i18n="nav.arcade">Yelo Arcade</a></li>
+            <li><a href="#about" class="nav-link" data-view-target="about" data-i18n="nav.about">About & Contact</a>
+            </li>
           </ul>
         </div>
 
@@ -575,6 +598,12 @@
             </button>
           </div>
         </div>
+      </div>
+
+      <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; font-size: 0.78rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-muted);">
+        <a href="#privacy" class="nav-link" data-view-target="privacy" data-i18n="footer.legalLinks.privacy">Privacy Policy</a>
+        <a href="#terms" class="nav-link" data-view-target="terms" data-i18n="footer.legalLinks.terms">Terms & Conditions</a>
+        <a href="#ip" class="nav-link" data-view-target="ip" data-i18n="footer.legalLinks.ip">Intellectual Property</a>
       </div>
 
       <div class="footer-bottom">
